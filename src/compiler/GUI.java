@@ -4,10 +4,16 @@
  */
 package compiler;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.StringBufferInputStream;
 import java.lang.System.Logger;
 import java.util.logging.Level;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import org.antlr.runtime.ANTLRInputStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
@@ -48,21 +54,56 @@ GUI() {
         jScrollPane2 = new javax.swing.JScrollPane();
         taSalida = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
+        limpiar = new javax.swing.JButton();
+        generar = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
 
+        taEntrada.setBackground(new java.awt.Color(153, 153, 153));
         taEntrada.setColumns(20);
         taEntrada.setRows(5);
         jScrollPane1.setViewportView(taEntrada);
 
+        taSalida.setBackground(new java.awt.Color(153, 153, 153));
         taSalida.setColumns(20);
         taSalida.setRows(5);
+        taSalida.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        taSalida.setEnabled(false);
+        taSalida.setSelectionColor(new java.awt.Color(0, 0, 0));
         jScrollPane2.setViewportView(taSalida);
 
-        jButton1.setText("Boton");
+        jButton1.setText("Compilar");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        limpiar.setText("Limpiar");
+        limpiar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                limpiarMouseClicked(evt);
+            }
+        });
+
+        generar.setText("Generar");
+        generar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                generarMouseClicked(evt);
+            }
+        });
+
+        jButton2.setText("Abrir");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
             }
         });
 
@@ -73,10 +114,16 @@ GUI() {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(limpiar)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(generar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap())
@@ -87,9 +134,13 @@ GUI() {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(limpiar)
+                    .addComponent(generar)
+                    .addComponent(jButton2))
                 .addGap(9, 9, 9))
         );
 
@@ -97,6 +148,7 @@ GUI() {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        taSalida.setText("");
         ANTLRInputStream input=null;
         String s= ""; s= taEntrada.getText();
          StringBufferInputStream str = new StringBufferInputStream(s);
@@ -116,6 +168,59 @@ GUI() {
             java.util.logging.Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void generarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_generarMouseClicked
+    String nombreClase = JOptionPane.showInputDialog("Por favor, introduce el nombre de la clase a generar");
+    String nombreMetodo = JOptionPane.showInputDialog("Por favor, introduce el nombre del método a generar");
+    String tipo = JOptionPane.showInputDialog("Por favor, ingrese el tipo de método (void, int, etc.)");
+
+    int generarVariables = JOptionPane.showConfirmDialog(null, "¿Deseas generar variables dentro del método?", "Confirmación", JOptionPane.YES_NO_OPTION);
+    StringBuilder variables = new StringBuilder();
+    if (generarVariables == JOptionPane.YES_OPTION) {
+        String[] tiposVariables = {"int", "float", "String", "char", "boolean"}; // Añade aquí los tipos de variables que deseas permitir
+        String tipoVariable = (String) JOptionPane.showInputDialog(null, "Selecciona el tipo de variable", "Tipo de variable", JOptionPane.QUESTION_MESSAGE, null, tiposVariables, tiposVariables[0]);
+        int cantidadVariables = Integer.parseInt(JOptionPane.showInputDialog("Por favor, introduce la cantidad de variables a generar"));
+        for (int i = 0; i < cantidadVariables; i++) {
+            String nombreVariable = JOptionPane.showInputDialog("Por favor, introduce el nombre de la variable " + (i + 1));
+            String valorVariable = JOptionPane.showInputDialog("Por favor, introduce el valor de la variable " + nombreVariable);
+            variables.append("    " + tipoVariable + " " + nombreVariable + " = " + valorVariable + ";\n");
+        }
+    }
+
+    taEntrada.setText("public class "+ nombreClase +"{\n" +
+        "  private " + tipo +" " + nombreMetodo + "(){\n" +
+        variables.toString() +
+        "  }\n" +
+        "}"
+    );
+    }//GEN-LAST:event_generarMouseClicked
+
+    private void limpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limpiarMouseClicked
+        taEntrada.setText("");
+        taSalida.setText("");
+    }//GEN-LAST:event_limpiarMouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        JFileChooser fileChooser = new JFileChooser();
+    FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos JAVA", "java");
+    fileChooser.setFileFilter(filter);
+    int seleccion = fileChooser.showOpenDialog(null);
+    if (seleccion == JFileChooser.APPROVE_OPTION) {
+        File archivo = fileChooser.getSelectedFile();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(archivo));
+            taEntrada.read(reader, null);
+            reader.close();
+            taEntrada.requestFocus();
+        } catch (IOException ex) {
+            System.out.println("Error al leer el archivo");
+        }
+    }
+    }//GEN-LAST:event_jButton2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -160,9 +265,12 @@ GUI() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton generar;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton limpiar;
     private javax.swing.JTextArea taEntrada;
     private javax.swing.JTextArea taSalida;
     // End of variables declaration//GEN-END:variables
