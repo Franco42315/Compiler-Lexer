@@ -1,5 +1,5 @@
 package compiler;
-// $ANTLR 3.5.2 compiler.g 2024-03-03 16:14:45
+
 import org.antlr.runtime.*;
 import java.util.Stack;
 import java.util.List;
@@ -8,6 +8,9 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class compilerLexer extends Lexer {
 	public static final int EOF=-1;
+	public static final int T__34=34;
+	public static final int T__35=35;
+	public static final int T__36=36;
 	public static final int BOOLEAN=4;
 	public static final int CCHAR=5;
 	public static final int CFLOAT=6;
@@ -54,13 +57,74 @@ public class compilerLexer extends Lexer {
 	}
 	@Override public String getGrammarFileName() { return "compiler.g"; }
 
+	// $ANTLR start "T__34"
+	public final void mT__34() throws RecognitionException {
+		try {
+			int _type = T__34;
+			int _channel = DEFAULT_TOKEN_CHANNEL;
+			// compiler.g:2:7: ( '[' )
+			// compiler.g:2:9: '['
+			{
+			match('['); 
+			}
+
+			state.type = _type;
+			state.channel = _channel;
+		}
+		finally {
+			// do for sure before leaving
+		}
+	}
+	// $ANTLR end "T__34"
+
+	// $ANTLR start "T__35"
+	public final void mT__35() throws RecognitionException {
+		try {
+			int _type = T__35;
+			int _channel = DEFAULT_TOKEN_CHANNEL;
+			// compiler.g:3:7: ( ']' )
+			// compiler.g:3:9: ']'
+			{
+			match(']'); 
+			}
+
+			state.type = _type;
+			state.channel = _channel;
+		}
+		finally {
+			// do for sure before leaving
+		}
+	}
+	// $ANTLR end "T__35"
+
+	// $ANTLR start "T__36"
+	public final void mT__36() throws RecognitionException {
+		try {
+			int _type = T__36;
+			int _channel = DEFAULT_TOKEN_CHANNEL;
+			// compiler.g:4:7: ( 'new' )
+			// compiler.g:4:9: 'new'
+			{
+			match("new"); 
+
+			}
+
+			state.type = _type;
+			state.channel = _channel;
+		}
+		finally {
+			// do for sure before leaving
+		}
+	}
+	// $ANTLR end "T__36"
+
 	// $ANTLR start "COMA"
 	public final void mCOMA() throws RecognitionException {
 		try {
 			int _type = COMA;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:116:6: ( ',' )
-			// compiler.g:116:8: ','
+			// compiler.g:256:6: ( ',' )
+			// compiler.g:256:8: ','
 			{
 			match(','); 
 			}
@@ -79,8 +143,8 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = PARA;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:117:6: ( '(' )
-			// compiler.g:117:8: '('
+			// compiler.g:257:6: ( '(' )
+			// compiler.g:257:8: '('
 			{
 			match('('); 
 			}
@@ -99,8 +163,8 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = PARC;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:118:6: ( ')' )
-			// compiler.g:118:8: ')'
+			// compiler.g:258:6: ( ')' )
+			// compiler.g:258:8: ')'
 			{
 			match(')'); 
 			}
@@ -119,8 +183,8 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = END;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:119:8: ( 'e' 'n' 'd' )
-			// compiler.g:119:10: 'e' 'n' 'd'
+			// compiler.g:259:8: ( 'e' 'n' 'd' )
+			// compiler.g:259:10: 'e' 'n' 'd'
 			{
 			match('e'); 
 			match('n'); 
@@ -141,8 +205,8 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = OPMAS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:120:8: ( '+' )
-			// compiler.g:120:10: '+'
+			// compiler.g:260:8: ( '+' )
+			// compiler.g:260:10: '+'
 			{
 			match('+'); 
 			}
@@ -161,8 +225,8 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = OPMENOS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:121:8: ( '-' )
-			// compiler.g:121:10: '-'
+			// compiler.g:261:8: ( '-' )
+			// compiler.g:261:10: '-'
 			{
 			match('-'); 
 			}
@@ -181,8 +245,8 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = OPDIV;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:122:8: ( '/' )
-			// compiler.g:122:10: '/'
+			// compiler.g:262:8: ( '/' )
+			// compiler.g:262:10: '/'
 			{
 			match('/'); 
 			}
@@ -201,8 +265,8 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = OPMULT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:123:8: ( '*' )
-			// compiler.g:123:10: '*'
+			// compiler.g:263:8: ( '*' )
+			// compiler.g:263:10: '*'
 			{
 			match('*'); 
 			}
@@ -221,8 +285,8 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = LLAVEA;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:124:8: ( '{' )
-			// compiler.g:124:10: '{'
+			// compiler.g:264:8: ( '{' )
+			// compiler.g:264:10: '{'
 			{
 			match('{'); 
 			}
@@ -241,8 +305,8 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = LLAVEC;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:125:8: ( '}' )
-			// compiler.g:125:10: '}'
+			// compiler.g:265:8: ( '}' )
+			// compiler.g:265:10: '}'
 			{
 			match('}'); 
 			}
@@ -261,8 +325,8 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = OPASIGN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:126:11: ( '=' )
-			// compiler.g:126:13: '='
+			// compiler.g:266:11: ( '=' )
+			// compiler.g:266:13: '='
 			{
 			match('='); 
 			}
@@ -281,8 +345,8 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = PUNTOYCOMA;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:127:11: ( ';' )
-			// compiler.g:127:13: ';'
+			// compiler.g:267:11: ( ';' )
+			// compiler.g:267:13: ';'
 			{
 			match(';'); 
 			}
@@ -301,8 +365,8 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = PUBLIC;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:128:10: ( 'public' )
-			// compiler.g:128:12: 'public'
+			// compiler.g:268:10: ( 'public' )
+			// compiler.g:268:12: 'public'
 			{
 			match("public"); 
 
@@ -322,8 +386,8 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = STRING;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:129:8: ( 'String' )
-			// compiler.g:129:9: 'String'
+			// compiler.g:269:8: ( 'String' )
+			// compiler.g:269:9: 'String'
 			{
 			match("String"); 
 
@@ -343,8 +407,8 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = INT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:130:4: ( 'int' )
-			// compiler.g:130:6: 'int'
+			// compiler.g:270:4: ( 'int' )
+			// compiler.g:270:6: 'int'
 			{
 			match("int"); 
 
@@ -364,8 +428,8 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = FLOAT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:131:6: ( 'float' )
-			// compiler.g:131:7: 'float'
+			// compiler.g:271:6: ( 'float' )
+			// compiler.g:271:7: 'float'
 			{
 			match("float"); 
 
@@ -385,8 +449,8 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = DOUBLE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:132:8: ( 'double' )
-			// compiler.g:132:9: 'double'
+			// compiler.g:272:8: ( 'double' )
+			// compiler.g:272:9: 'double'
 			{
 			match("double"); 
 
@@ -406,8 +470,8 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = BOOLEAN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:133:9: ( 'boolean' )
-			// compiler.g:133:11: 'boolean'
+			// compiler.g:273:9: ( 'boolean' )
+			// compiler.g:273:11: 'boolean'
 			{
 			match("boolean"); 
 
@@ -427,8 +491,8 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = CHAR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:134:5: ( 'char' )
-			// compiler.g:134:8: 'char'
+			// compiler.g:274:5: ( 'char' )
+			// compiler.g:274:8: 'char'
 			{
 			match("char"); 
 
@@ -448,8 +512,8 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = VOID;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:135:5: ( 'void' )
-			// compiler.g:135:7: 'void'
+			// compiler.g:275:5: ( 'void' )
+			// compiler.g:275:7: 'void'
 			{
 			match("void"); 
 
@@ -469,8 +533,8 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = PRIVATE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:136:10: ( 'private' )
-			// compiler.g:136:12: 'private'
+			// compiler.g:276:10: ( 'private' )
+			// compiler.g:276:12: 'private'
 			{
 			match("private"); 
 
@@ -490,8 +554,8 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = PROTECTED;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:137:10: ( 'protected' )
-			// compiler.g:137:12: 'protected'
+			// compiler.g:277:10: ( 'protected' )
+			// compiler.g:277:12: 'protected'
 			{
 			match("protected"); 
 
@@ -511,8 +575,8 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = CLASS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:138:9: ( 'class' )
-			// compiler.g:138:11: 'class'
+			// compiler.g:278:9: ( 'class' )
+			// compiler.g:278:11: 'class'
 			{
 			match("class"); 
 
@@ -532,8 +596,8 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = STATIC;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:139:8: ( 'static' )
-			// compiler.g:139:10: 'static'
+			// compiler.g:279:8: ( 'static' )
+			// compiler.g:279:10: 'static'
 			{
 			match("static"); 
 
@@ -553,8 +617,8 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = CCHAR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:140:9: ( '\\'' ( ' ' .. 'z' ) '\\'' )
-			// compiler.g:140:11: '\\'' ( ' ' .. 'z' ) '\\''
+			// compiler.g:280:9: ( '\\'' ( ' ' .. 'z' ) '\\'' )
+			// compiler.g:280:11: '\\'' ( ' ' .. 'z' ) '\\''
 			{
 			match('\''); 
 			if ( (input.LA(1) >= ' ' && input.LA(1) <= 'z') ) {
@@ -582,11 +646,11 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = CSTRING;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:141:8: ( '\\\"' ( ' ' .. 'z' )* '\\\"' )
-			// compiler.g:141:10: '\\\"' ( ' ' .. 'z' )* '\\\"'
+			// compiler.g:281:8: ( '\\\"' ( ' ' .. 'z' )* '\\\"' )
+			// compiler.g:281:10: '\\\"' ( ' ' .. 'z' )* '\\\"'
 			{
 			match('\"'); 
-			// compiler.g:141:16: ( ' ' .. 'z' )*
+			// compiler.g:281:16: ( ' ' .. 'z' )*
 			loop1:
 			while (true) {
 				int alt1=2;
@@ -639,8 +703,8 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = ID;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:142:8: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-			// compiler.g:142:10: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+			// compiler.g:282:8: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+			// compiler.g:282:10: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
 			{
 			if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
 				input.consume();
@@ -650,7 +714,7 @@ public class compilerLexer extends Lexer {
 				recover(mse);
 				throw mse;
 			}
-			// compiler.g:142:33: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+			// compiler.g:282:33: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
 			loop2:
 			while (true) {
 				int alt2=2;
@@ -695,10 +759,10 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = CFLOAT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:143:9: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )+ )
-			// compiler.g:143:11: ( '0' .. '9' )+ '.' ( '0' .. '9' )+
+			// compiler.g:283:9: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )+ )
+			// compiler.g:283:11: ( '0' .. '9' )+ '.' ( '0' .. '9' )+
 			{
-			// compiler.g:143:11: ( '0' .. '9' )+
+			// compiler.g:283:11: ( '0' .. '9' )+
 			int cnt3=0;
 			loop3:
 			while (true) {
@@ -732,7 +796,7 @@ public class compilerLexer extends Lexer {
 			}
 
 			match('.'); 
-			// compiler.g:143:25: ( '0' .. '9' )+
+			// compiler.g:283:25: ( '0' .. '9' )+
 			int cnt4=0;
 			loop4:
 			while (true) {
@@ -781,10 +845,10 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = CINT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:144:9: ( ( '0' .. '9' )+ )
-			// compiler.g:144:11: ( '0' .. '9' )+
+			// compiler.g:284:9: ( ( '0' .. '9' )+ )
+			// compiler.g:284:11: ( '0' .. '9' )+
 			{
-			// compiler.g:144:11: ( '0' .. '9' )+
+			// compiler.g:284:11: ( '0' .. '9' )+
 			int cnt5=0;
 			loop5:
 			while (true) {
@@ -833,10 +897,10 @@ public class compilerLexer extends Lexer {
 		try {
 			int _type = WS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// compiler.g:145:8: ( ( ' ' | '\\n' | '\\t' | '\\r' )+ )
-			// compiler.g:145:10: ( ' ' | '\\n' | '\\t' | '\\r' )+
+			// compiler.g:285:8: ( ( ' ' | '\\n' | '\\t' | '\\r' )+ )
+			// compiler.g:285:10: ( ' ' | '\\n' | '\\t' | '\\r' )+
 			{
-			// compiler.g:145:10: ( ' ' | '\\n' | '\\t' | '\\r' )+
+			// compiler.g:285:10: ( ' ' | '\\n' | '\\t' | '\\r' )+
 			int cnt6=0;
 			loop6:
 			while (true) {
@@ -883,215 +947,236 @@ public class compilerLexer extends Lexer {
 
 	@Override
 	public void mTokens() throws RecognitionException {
-		// compiler.g:1:8: ( COMA | PARA | PARC | END | OPMAS | OPMENOS | OPDIV | OPMULT | LLAVEA | LLAVEC | OPASIGN | PUNTOYCOMA | PUBLIC | STRING | INT | FLOAT | DOUBLE | BOOLEAN | CHAR | VOID | PRIVATE | PROTECTED | CLASS | STATIC | CCHAR | CSTRING | ID | CFLOAT | CINT | WS )
-		int alt7=30;
+		// compiler.g:1:8: ( T__34 | T__35 | T__36 | COMA | PARA | PARC | END | OPMAS | OPMENOS | OPDIV | OPMULT | LLAVEA | LLAVEC | OPASIGN | PUNTOYCOMA | PUBLIC | STRING | INT | FLOAT | DOUBLE | BOOLEAN | CHAR | VOID | PRIVATE | PROTECTED | CLASS | STATIC | CCHAR | CSTRING | ID | CFLOAT | CINT | WS )
+		int alt7=33;
 		alt7 = dfa7.predict(input);
 		switch (alt7) {
 			case 1 :
-				// compiler.g:1:10: COMA
+				// compiler.g:1:10: T__34
+				{
+				mT__34(); 
+
+				}
+				break;
+			case 2 :
+				// compiler.g:1:16: T__35
+				{
+				mT__35(); 
+
+				}
+				break;
+			case 3 :
+				// compiler.g:1:22: T__36
+				{
+				mT__36(); 
+
+				}
+				break;
+			case 4 :
+				// compiler.g:1:28: COMA
 				{
 				mCOMA(); 
 
 				}
 				break;
-			case 2 :
-				// compiler.g:1:15: PARA
+			case 5 :
+				// compiler.g:1:33: PARA
 				{
 				mPARA(); 
 
 				}
 				break;
-			case 3 :
-				// compiler.g:1:20: PARC
+			case 6 :
+				// compiler.g:1:38: PARC
 				{
 				mPARC(); 
 
 				}
 				break;
-			case 4 :
-				// compiler.g:1:25: END
+			case 7 :
+				// compiler.g:1:43: END
 				{
 				mEND(); 
 
 				}
 				break;
-			case 5 :
-				// compiler.g:1:29: OPMAS
+			case 8 :
+				// compiler.g:1:47: OPMAS
 				{
 				mOPMAS(); 
 
 				}
 				break;
-			case 6 :
-				// compiler.g:1:35: OPMENOS
+			case 9 :
+				// compiler.g:1:53: OPMENOS
 				{
 				mOPMENOS(); 
 
 				}
 				break;
-			case 7 :
-				// compiler.g:1:43: OPDIV
+			case 10 :
+				// compiler.g:1:61: OPDIV
 				{
 				mOPDIV(); 
 
 				}
 				break;
-			case 8 :
-				// compiler.g:1:49: OPMULT
+			case 11 :
+				// compiler.g:1:67: OPMULT
 				{
 				mOPMULT(); 
 
 				}
 				break;
-			case 9 :
-				// compiler.g:1:56: LLAVEA
+			case 12 :
+				// compiler.g:1:74: LLAVEA
 				{
 				mLLAVEA(); 
 
 				}
 				break;
-			case 10 :
-				// compiler.g:1:63: LLAVEC
+			case 13 :
+				// compiler.g:1:81: LLAVEC
 				{
 				mLLAVEC(); 
 
 				}
 				break;
-			case 11 :
-				// compiler.g:1:70: OPASIGN
+			case 14 :
+				// compiler.g:1:88: OPASIGN
 				{
 				mOPASIGN(); 
 
 				}
 				break;
-			case 12 :
-				// compiler.g:1:78: PUNTOYCOMA
+			case 15 :
+				// compiler.g:1:96: PUNTOYCOMA
 				{
 				mPUNTOYCOMA(); 
 
 				}
 				break;
-			case 13 :
-				// compiler.g:1:89: PUBLIC
+			case 16 :
+				// compiler.g:1:107: PUBLIC
 				{
 				mPUBLIC(); 
 
 				}
 				break;
-			case 14 :
-				// compiler.g:1:96: STRING
+			case 17 :
+				// compiler.g:1:114: STRING
 				{
 				mSTRING(); 
 
 				}
 				break;
-			case 15 :
-				// compiler.g:1:103: INT
+			case 18 :
+				// compiler.g:1:121: INT
 				{
 				mINT(); 
 
 				}
 				break;
-			case 16 :
-				// compiler.g:1:107: FLOAT
+			case 19 :
+				// compiler.g:1:125: FLOAT
 				{
 				mFLOAT(); 
 
 				}
 				break;
-			case 17 :
-				// compiler.g:1:113: DOUBLE
+			case 20 :
+				// compiler.g:1:131: DOUBLE
 				{
 				mDOUBLE(); 
 
 				}
 				break;
-			case 18 :
-				// compiler.g:1:120: BOOLEAN
+			case 21 :
+				// compiler.g:1:138: BOOLEAN
 				{
 				mBOOLEAN(); 
 
 				}
 				break;
-			case 19 :
-				// compiler.g:1:128: CHAR
+			case 22 :
+				// compiler.g:1:146: CHAR
 				{
 				mCHAR(); 
 
 				}
 				break;
-			case 20 :
-				// compiler.g:1:133: VOID
+			case 23 :
+				// compiler.g:1:151: VOID
 				{
 				mVOID(); 
 
 				}
 				break;
-			case 21 :
-				// compiler.g:1:138: PRIVATE
+			case 24 :
+				// compiler.g:1:156: PRIVATE
 				{
 				mPRIVATE(); 
 
 				}
 				break;
-			case 22 :
-				// compiler.g:1:146: PROTECTED
+			case 25 :
+				// compiler.g:1:164: PROTECTED
 				{
 				mPROTECTED(); 
 
 				}
 				break;
-			case 23 :
-				// compiler.g:1:156: CLASS
+			case 26 :
+				// compiler.g:1:174: CLASS
 				{
 				mCLASS(); 
 
 				}
 				break;
-			case 24 :
-				// compiler.g:1:162: STATIC
+			case 27 :
+				// compiler.g:1:180: STATIC
 				{
 				mSTATIC(); 
 
 				}
 				break;
-			case 25 :
-				// compiler.g:1:169: CCHAR
+			case 28 :
+				// compiler.g:1:187: CCHAR
 				{
 				mCCHAR(); 
 
 				}
 				break;
-			case 26 :
-				// compiler.g:1:175: CSTRING
+			case 29 :
+				// compiler.g:1:193: CSTRING
 				{
 				mCSTRING(); 
 
 				}
 				break;
-			case 27 :
-				// compiler.g:1:183: ID
+			case 30 :
+				// compiler.g:1:201: ID
 				{
 				mID(); 
 
 				}
 				break;
-			case 28 :
-				// compiler.g:1:186: CFLOAT
+			case 31 :
+				// compiler.g:1:204: CFLOAT
 				{
 				mCFLOAT(); 
 
 				}
 				break;
-			case 29 :
-				// compiler.g:1:193: CINT
+			case 32 :
+				// compiler.g:1:211: CINT
 				{
 				mCINT(); 
 
 				}
 				break;
-			case 30 :
-				// compiler.g:1:198: WS
+			case 33 :
+				// compiler.g:1:216: WS
 				{
 				mWS(); 
 
@@ -1104,139 +1189,148 @@ public class compilerLexer extends Lexer {
 
 	protected DFA7 dfa7 = new DFA7(this);
 	static final String DFA7_eotS =
-		"\4\uffff\1\30\10\uffff\11\30\3\uffff\1\50\1\uffff\14\30\2\uffff\1\66\4"+
-		"\30\1\73\7\30\1\uffff\4\30\1\uffff\3\30\1\112\1\30\1\114\5\30\1\122\2"+
-		"\30\1\uffff\1\125\1\uffff\1\30\1\127\2\30\1\132\1\uffff\1\133\1\30\1\uffff"+
-		"\1\135\1\uffff\1\136\1\30\2\uffff\1\140\2\uffff\1\30\1\uffff\1\142\1\uffff";
+		"\3\uffff\1\33\3\uffff\1\33\10\uffff\11\33\3\uffff\1\54\1\uffff\15\33\2"+
+		"\uffff\1\73\1\74\4\33\1\101\7\33\2\uffff\4\33\1\uffff\3\33\1\120\1\33"+
+		"\1\122\5\33\1\130\2\33\1\uffff\1\133\1\uffff\1\33\1\135\2\33\1\140\1\uffff"+
+		"\1\141\1\33\1\uffff\1\143\1\uffff\1\144\1\33\2\uffff\1\146\2\uffff\1\33"+
+		"\1\uffff\1\150\1\uffff";
 	static final String DFA7_eofS =
-		"\143\uffff";
+		"\151\uffff";
 	static final String DFA7_minS =
-		"\1\11\3\uffff\1\156\10\uffff\1\162\1\164\1\156\1\154\2\157\1\150\1\157"+
-		"\1\164\3\uffff\1\56\1\uffff\1\144\1\142\1\151\1\162\1\164\1\157\1\165"+
-		"\1\157\2\141\1\151\1\141\2\uffff\1\60\1\154\1\166\1\164\1\151\1\60\1\141"+
-		"\1\142\1\154\1\162\1\163\1\144\1\164\1\uffff\1\151\1\141\1\145\1\156\1"+
-		"\uffff\1\164\1\154\1\145\1\60\1\163\1\60\1\151\1\143\1\164\1\143\1\147"+
-		"\1\60\1\145\1\141\1\uffff\1\60\1\uffff\1\143\1\60\1\145\1\164\1\60\1\uffff"+
-		"\1\60\1\156\1\uffff\1\60\1\uffff\1\60\1\145\2\uffff\1\60\2\uffff\1\144"+
-		"\1\uffff\1\60\1\uffff";
+		"\1\11\2\uffff\1\145\3\uffff\1\156\10\uffff\1\162\1\164\1\156\1\154\2\157"+
+		"\1\150\1\157\1\164\3\uffff\1\56\1\uffff\1\167\1\144\1\142\1\151\1\162"+
+		"\1\164\1\157\1\165\1\157\2\141\1\151\1\141\2\uffff\2\60\1\154\1\166\1"+
+		"\164\1\151\1\60\1\141\1\142\1\154\1\162\1\163\1\144\1\164\2\uffff\1\151"+
+		"\1\141\1\145\1\156\1\uffff\1\164\1\154\1\145\1\60\1\163\1\60\1\151\1\143"+
+		"\1\164\1\143\1\147\1\60\1\145\1\141\1\uffff\1\60\1\uffff\1\143\1\60\1"+
+		"\145\1\164\1\60\1\uffff\1\60\1\156\1\uffff\1\60\1\uffff\1\60\1\145\2\uffff"+
+		"\1\60\2\uffff\1\144\1\uffff\1\60\1\uffff";
 	static final String DFA7_maxS =
-		"\1\175\3\uffff\1\156\10\uffff\1\165\1\164\1\156\1\154\2\157\1\154\1\157"+
-		"\1\164\3\uffff\1\71\1\uffff\1\144\1\142\1\157\1\162\1\164\1\157\1\165"+
-		"\1\157\2\141\1\151\1\141\2\uffff\1\172\1\154\1\166\1\164\1\151\1\172\1"+
-		"\141\1\142\1\154\1\162\1\163\1\144\1\164\1\uffff\1\151\1\141\1\145\1\156"+
-		"\1\uffff\1\164\1\154\1\145\1\172\1\163\1\172\1\151\1\143\1\164\1\143\1"+
-		"\147\1\172\1\145\1\141\1\uffff\1\172\1\uffff\1\143\1\172\1\145\1\164\1"+
-		"\172\1\uffff\1\172\1\156\1\uffff\1\172\1\uffff\1\172\1\145\2\uffff\1\172"+
-		"\2\uffff\1\144\1\uffff\1\172\1\uffff";
+		"\1\175\2\uffff\1\145\3\uffff\1\156\10\uffff\1\165\1\164\1\156\1\154\2"+
+		"\157\1\154\1\157\1\164\3\uffff\1\71\1\uffff\1\167\1\144\1\142\1\157\1"+
+		"\162\1\164\1\157\1\165\1\157\2\141\1\151\1\141\2\uffff\2\172\1\154\1\166"+
+		"\1\164\1\151\1\172\1\141\1\142\1\154\1\162\1\163\1\144\1\164\2\uffff\1"+
+		"\151\1\141\1\145\1\156\1\uffff\1\164\1\154\1\145\1\172\1\163\1\172\1\151"+
+		"\1\143\1\164\1\143\1\147\1\172\1\145\1\141\1\uffff\1\172\1\uffff\1\143"+
+		"\1\172\1\145\1\164\1\172\1\uffff\1\172\1\156\1\uffff\1\172\1\uffff\1\172"+
+		"\1\145\2\uffff\1\172\2\uffff\1\144\1\uffff\1\172\1\uffff";
 	static final String DFA7_acceptS =
-		"\1\uffff\1\1\1\2\1\3\1\uffff\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1\14\11\uffff"+
-		"\1\31\1\32\1\33\1\uffff\1\36\14\uffff\1\34\1\35\15\uffff\1\4\4\uffff\1"+
-		"\17\16\uffff\1\23\1\uffff\1\24\5\uffff\1\20\2\uffff\1\27\1\uffff\1\15"+
-		"\2\uffff\1\16\1\21\1\uffff\1\30\1\25\1\uffff\1\22\1\uffff\1\26";
+		"\1\uffff\1\1\1\2\1\uffff\1\4\1\5\1\6\1\uffff\1\10\1\11\1\12\1\13\1\14"+
+		"\1\15\1\16\1\17\11\uffff\1\34\1\35\1\36\1\uffff\1\41\15\uffff\1\37\1\40"+
+		"\16\uffff\1\3\1\7\4\uffff\1\22\16\uffff\1\26\1\uffff\1\27\5\uffff\1\23"+
+		"\2\uffff\1\32\1\uffff\1\20\2\uffff\1\21\1\24\1\uffff\1\33\1\30\1\uffff"+
+		"\1\25\1\uffff\1\31";
 	static final String DFA7_specialS =
-		"\143\uffff}>";
+		"\151\uffff}>";
 	static final String[] DFA7_transitionS = {
-			"\2\32\2\uffff\1\32\22\uffff\1\32\1\uffff\1\27\4\uffff\1\26\1\2\1\3\1"+
-			"\10\1\5\1\1\1\6\1\uffff\1\7\12\31\1\uffff\1\14\1\uffff\1\13\3\uffff\22"+
-			"\30\1\16\7\30\4\uffff\1\30\1\uffff\1\30\1\22\1\23\1\21\1\4\1\20\2\30"+
-			"\1\17\6\30\1\15\2\30\1\25\2\30\1\24\4\30\1\11\1\uffff\1\12",
+			"\2\35\2\uffff\1\35\22\uffff\1\35\1\uffff\1\32\4\uffff\1\31\1\5\1\6\1"+
+			"\13\1\10\1\4\1\11\1\uffff\1\12\12\34\1\uffff\1\17\1\uffff\1\16\3\uffff"+
+			"\22\33\1\21\7\33\1\1\1\uffff\1\2\1\uffff\1\33\1\uffff\1\33\1\25\1\26"+
+			"\1\24\1\7\1\23\2\33\1\22\4\33\1\3\1\33\1\20\2\33\1\30\2\33\1\27\4\33"+
+			"\1\14\1\uffff\1\15",
 			"",
 			"",
-			"",
-			"\1\33",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"\1\35\2\uffff\1\34",
 			"\1\36",
+			"",
+			"",
+			"",
 			"\1\37",
-			"\1\40",
-			"\1\41",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"\1\41\2\uffff\1\40",
 			"\1\42",
-			"\1\43\3\uffff\1\44",
+			"\1\43",
+			"\1\44",
 			"\1\45",
 			"\1\46",
-			"",
-			"",
-			"",
-			"\1\47\1\uffff\12\31",
-			"",
+			"\1\47\3\uffff\1\50",
 			"\1\51",
 			"\1\52",
-			"\1\53\5\uffff\1\54",
+			"",
+			"",
+			"",
+			"\1\53\1\uffff\12\34",
+			"",
 			"\1\55",
 			"\1\56",
 			"\1\57",
-			"\1\60",
-			"\1\61",
+			"\1\60\5\uffff\1\61",
 			"\1\62",
 			"\1\63",
 			"\1\64",
 			"\1\65",
-			"",
-			"",
-			"\12\30\7\uffff\32\30\4\uffff\1\30\1\uffff\32\30",
+			"\1\66",
 			"\1\67",
 			"\1\70",
 			"\1\71",
 			"\1\72",
-			"\12\30\7\uffff\32\30\4\uffff\1\30\1\uffff\32\30",
-			"\1\74",
+			"",
+			"",
+			"\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
+			"\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
 			"\1\75",
 			"\1\76",
 			"\1\77",
 			"\1\100",
-			"\1\101",
+			"\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
 			"\1\102",
-			"",
 			"\1\103",
 			"\1\104",
 			"\1\105",
 			"\1\106",
-			"",
 			"\1\107",
 			"\1\110",
+			"",
+			"",
 			"\1\111",
-			"\12\30\7\uffff\32\30\4\uffff\1\30\1\uffff\32\30",
+			"\1\112",
 			"\1\113",
-			"\12\30\7\uffff\32\30\4\uffff\1\30\1\uffff\32\30",
+			"\1\114",
+			"",
 			"\1\115",
 			"\1\116",
 			"\1\117",
-			"\1\120",
+			"\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
 			"\1\121",
-			"\12\30\7\uffff\32\30\4\uffff\1\30\1\uffff\32\30",
+			"\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
 			"\1\123",
 			"\1\124",
-			"",
-			"\12\30\7\uffff\32\30\4\uffff\1\30\1\uffff\32\30",
-			"",
+			"\1\125",
 			"\1\126",
-			"\12\30\7\uffff\32\30\4\uffff\1\30\1\uffff\32\30",
-			"\1\130",
+			"\1\127",
+			"\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
 			"\1\131",
-			"\12\30\7\uffff\32\30\4\uffff\1\30\1\uffff\32\30",
+			"\1\132",
 			"",
-			"\12\30\7\uffff\32\30\4\uffff\1\30\1\uffff\32\30",
+			"\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
+			"",
 			"\1\134",
-			"",
-			"\12\30\7\uffff\32\30\4\uffff\1\30\1\uffff\32\30",
-			"",
-			"\12\30\7\uffff\32\30\4\uffff\1\30\1\uffff\32\30",
+			"\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
+			"\1\136",
 			"\1\137",
+			"\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
+			"",
+			"\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
+			"\1\142",
+			"",
+			"\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
+			"",
+			"\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
+			"\1\145",
 			"",
 			"",
-			"\12\30\7\uffff\32\30\4\uffff\1\30\1\uffff\32\30",
+			"\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
 			"",
 			"",
-			"\1\141",
+			"\1\147",
 			"",
-			"\12\30\7\uffff\32\30\4\uffff\1\30\1\uffff\32\30",
+			"\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
 			""
 	};
 
@@ -1271,7 +1365,7 @@ public class compilerLexer extends Lexer {
 		}
 		@Override
 		public String getDescription() {
-			return "1:1: Tokens : ( COMA | PARA | PARC | END | OPMAS | OPMENOS | OPDIV | OPMULT | LLAVEA | LLAVEC | OPASIGN | PUNTOYCOMA | PUBLIC | STRING | INT | FLOAT | DOUBLE | BOOLEAN | CHAR | VOID | PRIVATE | PROTECTED | CLASS | STATIC | CCHAR | CSTRING | ID | CFLOAT | CINT | WS );";
+			return "1:1: Tokens : ( T__34 | T__35 | T__36 | COMA | PARA | PARC | END | OPMAS | OPMENOS | OPDIV | OPMULT | LLAVEA | LLAVEC | OPASIGN | PUNTOYCOMA | PUBLIC | STRING | INT | FLOAT | DOUBLE | BOOLEAN | CHAR | VOID | PRIVATE | PROTECTED | CLASS | STATIC | CCHAR | CSTRING | ID | CFLOAT | CINT | WS );";
 		}
 	}
 

@@ -1,4 +1,3 @@
-package compiler;
 // $ANTLR 3.5.2 compiler.g 2024-03-14 06:07:35
  //  -------------- importaciones 
         import java.util.HashMap;       
@@ -51,9 +50,6 @@ public class compilerParser extends Parser {
 	public static final int STRING=31;
 	public static final int VOID=32;
 	public static final int WS=33;
-        private javax.swing.JTextArea salida;
-        
-       
 
 	// delegates
 	public Parser[] getDelegates() {
@@ -69,8 +65,6 @@ public class compilerParser extends Parser {
 	public compilerParser(TokenStream input, RecognizerSharedState state) {
 		super(input, state);
 	}
-         public void setSalida(javax.swing.JTextArea _salida)
-            { salida=_salida;} 
 
 	@Override public String[] getTokenNames() { return compilerParser.tokenNames; }
 	@Override public String getGrammarFileName() { return "compiler.g"; }
@@ -83,7 +77,7 @@ public class compilerParser extends Parser {
 	        HashMap tablaDeClase = new HashMap();
 
 	       public void  procesaDeclLocal(String id,String tipo){
-	         salida.append(id+" : "+tipo+"\n");
+	         System.out.println(id+" : "+tipo);
 	         Integer verifica = (Integer) tablaDeSimbolos.get(id);
 	         if (verifica==null){
 	            if(tipo.compareTo("int")==0){ Integer objTipo = Integer.valueOf(1);  
@@ -97,10 +91,11 @@ public class compilerParser extends Parser {
 	                                         tablaDeSimbolos.put(id,objTipo);
 	            }
 	          }
-	          else salida.append( "La variable: "+id+" ya se ha declarado."+"\n");          
+	          else System.err.println("La variable: "+id+" ya se ha declarado." );                               
 	       }
 
 	       public void  procesaDeclClase(String id,String tipo){
+	         //System.out.println(id+" : "+tipo);
 	         Integer verifica = (Integer) tablaDeClase.get(id);
 	         if (verifica==null){
 	            if(tipo.compareTo("int")==0){ Integer objTipo = Integer.valueOf(1);  
@@ -114,11 +109,10 @@ public class compilerParser extends Parser {
 	                                         tablaDeClase.put(id,objTipo);
 	            }
 	          }
-                 else salida.append("La variable: "+id+" ya se ha declarado." +"\n"); 
-                                                    
+	          else System.err.println("La variable: "+id+" ya se ha declarado." );                               
 	       }    
 
-	       public void error(String msg){salida.append("ERROR: "+msg+"\n");}
+	       public void error(String msg){System.out.println("ERROR: "+msg);}
 
 	public int checa(int t1, int t2, String e1, String e2){
 	      if(t1==t2) return t1;
@@ -148,7 +142,7 @@ public class compilerParser extends Parser {
 	                                        RecognitionException e) {
 	        String hdr = getErrorHeader(e);
 	        String msg = getErrorMessage(e, tokenNames);
-	        salida.append(">>MyCompiler>>  " + hdr + " " + msg+"\n");
+	        System.out.println(">>MyCompiler>>  " + hdr + " " + msg);
 	    }
 
 
@@ -756,7 +750,7 @@ public class compilerParser extends Parser {
 
 					                                 Integer objTest = (Integer) tablaDeSimbolos.get((id1!=null?id1.getText():null));
 					                                 if((objTest!=null)&&(objTest.intValue()<10)){
-					                                    salida.append("La variable "+(id1!=null?id1.getText():null)+" no es un arreglo." +"\n");
+					                                    System.err.println("La variable "+(id1!=null?id1.getText():null)+" no es un arreglo." );
 					                                 }
 					                                 else if(objTest!=null){
 					                                    tipoID =objTest.intValue()-10;
@@ -779,7 +773,7 @@ public class compilerParser extends Parser {
 			                                    //obj=obj.intValue()-10;
 			                                   //}
 			                                   if((t1!=null?((compilerParser.expr_return)t1).typeDetected:0) != tipoID ){
-			                                      salida.append("La variable "+(id1!=null?id1.getText():null)+" de tipo " +tipoID+ " se le asigno un valor incompatible de tipo "+ (t1!=null?((compilerParser.expr_return)t1).typeDetected:0)+"\n");
+			                                      System.err.println("La variable "+(id1!=null?id1.getText():null)+" de tipo " +tipoID+ " se le asigno un valor incompatible de tipo "+ (t1!=null?((compilerParser.expr_return)t1).typeDetected:0));
 			                                   }                                   
 
 
@@ -1044,7 +1038,7 @@ public class compilerParser extends Parser {
 
 							                                 Integer objTest = (Integer) tablaDeSimbolos.get((id1!=null?id1.getText():null));
 							                                 if(objTest.intValue()<10){
-							                                    salida.append("La variable "+(id1!=null?id1.getText():null)+" no es un arreglo." +"\n");
+							                                    System.err.println("La variable "+(id1!=null?id1.getText():null)+" no es un arreglo." );
 							                                 }
 							                                 else{
 							                                    retval.typeDetected =obj=objTest.intValue()-10;
@@ -1328,7 +1322,7 @@ public class compilerParser extends Parser {
 			   if((t1!=null?input.toString(t1.start,t1.stop):null)!=(t2!=null?input.toString(t2.start,t2.stop):null)){
 			      procesaDeclLocal((id1!=null?id1.getText():null),"arr"+(t1!=null?input.toString(t1.start,t1.stop):null));} 
 			   else{
-			      salida.append("Tipos no coinciden en arreglo "+(t1!=null?input.toString(t1.start,t1.stop):null)+"\n");
+			      System.err.println("Tipos no coinciden en arreglo "+(t1!=null?input.toString(t1.start,t1.stop):null));
 			   }      
 			      
 			match(input,34,FOLLOW_34_in_decl_arreglo_con_tamano743); 
@@ -1390,7 +1384,7 @@ public class compilerParser extends Parser {
 
 
 			   if(obtenerTipoNum((tipo5!=null?input.toString(tipo5.start,tipo5.stop):null))!=(e1!=null?((compilerParser.expr_return)e1).typeDetected:0)){
-			      salida.append("Error de tipos en arreglo "+(id1!=null?id1.getText():null)+ "y valor "+(e1!=null?input.toString(e1.start,e1.stop):null)+"\n");
+			      System.err.println("Error de tipos en arreglo "+(id1!=null?id1.getText():null)+ "y valor "+(e1!=null?input.toString(e1.start,e1.stop):null));
 			   }
 
 			// compiler.g:199:3: ( COMA e2= expr )*
@@ -1422,7 +1416,7 @@ public class compilerParser extends Parser {
 
 			      if(obtenerTipoNum((tipo5!=null?input.toString(tipo5.start,tipo5.stop):null))!=(e2!=null?((compilerParser.expr_return)e2).typeDetected:0)){
 
-			      salida.append("Error de tipos en arreglo "+(id1!=null?id1.getText():null)+ " y valor "+(e2!=null?input.toString(e2.start,e2.stop):null)+"\n");
+			      System.err.println("Error de tipos en arreglo "+(id1!=null?id1.getText():null)+ " y valor "+(e2!=null?input.toString(e2.start,e2.stop):null));
 			   }
 
 			match(input,LLAVEC,FOLLOW_LLAVEC_in_decl_arreglo_con_ini798); 
@@ -1491,10 +1485,10 @@ public class compilerParser extends Parser {
 
 
 			   if(obtenerTipoNum((tipo6!=null?input.toString(tipo6.start,tipo6.stop):null))!=tipoID){
-			      salida.append("Error de tipos en arreglo "+(id1!=null?id1.getText():null)+ " y asignacion new "+(tipo6!=null?input.toString(tipo6.start,tipo6.stop):null)+"\n");
+			      System.err.println("Error de tipos en arreglo "+(id1!=null?id1.getText():null)+ " y asignacion new "+(tipo6!=null?input.toString(tipo6.start,tipo6.stop):null));
 			   }
 			   else if(obtenerTipoNum((tipo6!=null?input.toString(tipo6.start,tipo6.stop):null))!=(e1!=null?((compilerParser.expr_return)e1).typeDetected:0)){
-			      salida.append("Error de tipos en arreglo "+(id1!=null?id1.getText():null)+ "y valor "+(e1!=null?input.toString(e1.start,e1.stop):null)+"\n");
+			      System.err.println("Error de tipos en arreglo "+(id1!=null?id1.getText():null)+ "y valor "+(e1!=null?input.toString(e1.start,e1.stop):null));
 			   }
 
 			// compiler.g:226:3: ( COMA e2= expr )*
@@ -1525,7 +1519,7 @@ public class compilerParser extends Parser {
 
 
 			      if(obtenerTipoNum((tipo6!=null?input.toString(tipo6.start,tipo6.stop):null))!=(e2!=null?((compilerParser.expr_return)e2).typeDetected:0)){
-			      salida.append("Error de tipos en arreglo "+(id1!=null?id1.getText():null)+ " y valor "+(e2!=null?input.toString(e2.start,e2.stop):null)+"\n");
+			      System.err.println("Error de tipos en arreglo "+(id1!=null?id1.getText():null)+ " y valor "+(e2!=null?input.toString(e2.start,e2.stop):null));
 			   }
 
 			match(input,LLAVEC,FOLLOW_LLAVEC_in_asignacion_arreglo848); 
@@ -1590,8 +1584,8 @@ public class compilerParser extends Parser {
 			match(input,END,FOLLOW_END_in_end880); 
 			  int a= ((Integer) tablaDeSimbolos.get("a")).intValue();
 			                 int b= ((Integer) tablaDeSimbolos.get("b")).intValue();    
-			                 salida.append("La a estuvo:" + a+"\n");
-			                 salida.append("La b estuvo:" + b+"\n"); 
+			                 System.out.println("La a estuvo:" + a);
+			                 System.out.println("La b estuvo:" + b); 
 			              
 			}
 

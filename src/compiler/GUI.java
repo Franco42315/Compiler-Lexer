@@ -5,8 +5,10 @@
 package compiler;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringBufferInputStream;
 import java.lang.System.Logger;
@@ -57,6 +59,7 @@ GUI() {
         limpiar = new javax.swing.JButton();
         generar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -107,6 +110,13 @@ GUI() {
             }
         });
 
+        jButton3.setText("Guardar");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -124,6 +134,8 @@ GUI() {
                         .addComponent(generar)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap())
@@ -140,7 +152,8 @@ GUI() {
                     .addComponent(jButton1)
                     .addComponent(limpiar)
                     .addComponent(generar)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
                 .addGap(9, 9, 9))
         );
 
@@ -174,29 +187,30 @@ GUI() {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void generarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_generarMouseClicked
-    String nombreClase = JOptionPane.showInputDialog("Por favor, introduce el nombre de la clase a generar");
-    String nombreMetodo = JOptionPane.showInputDialog("Por favor, introduce el nombre del método a generar");
-    String tipo = JOptionPane.showInputDialog("Por favor, ingrese el tipo de método (void, int, etc.)");
+        String nombreClase = JOptionPane.showInputDialog("Por favor, introduce el nombre de la clase a generar");
+        String nombreMetodo = JOptionPane.showInputDialog("Por favor, introduce el nombre del método a generar");
 
-    int generarVariables = JOptionPane.showConfirmDialog(null, "¿Deseas generar variables dentro del método?", "Confirmación", JOptionPane.YES_NO_OPTION);
-    StringBuilder variables = new StringBuilder();
-    if (generarVariables == JOptionPane.YES_OPTION) {
-        String[] tiposVariables = {"int", "float", "String", "char", "boolean"}; // Añade aquí los tipos de variables que deseas permitir
-        String tipoVariable = (String) JOptionPane.showInputDialog(null, "Selecciona el tipo de variable", "Tipo de variable", JOptionPane.QUESTION_MESSAGE, null, tiposVariables, tiposVariables[0]);
-        int cantidadVariables = Integer.parseInt(JOptionPane.showInputDialog("Por favor, introduce la cantidad de variables a generar"));
-        for (int i = 0; i < cantidadVariables; i++) {
-            String nombreVariable = JOptionPane.showInputDialog("Por favor, introduce el nombre de la variable " + (i + 1));
+       
+        String[] tiposMetodos = {"void", "int", "float"}; 
+        String tipo = (String) JOptionPane.showInputDialog(null, "Selecciona el tipo de método", "Tipo de método", JOptionPane.QUESTION_MESSAGE, null, tiposMetodos, tiposMetodos[0]);
+
+        StringBuilder variables = new StringBuilder();
+        int generarVariable = JOptionPane.showConfirmDialog(null, "¿Deseas generar una variable?", "Confirmación", JOptionPane.YES_NO_OPTION);
+        while (generarVariable == JOptionPane.YES_OPTION) {
+            String[] tiposVariables = {"int", "float"}; 
+            String tipoVariable = (String) JOptionPane.showInputDialog(null, "Selecciona el tipo de variable", "Tipo de variable", JOptionPane.QUESTION_MESSAGE, null, tiposVariables, tiposVariables[0]);
+            String nombreVariable = JOptionPane.showInputDialog("Por favor, introduce el nombre de la variable");
             String valorVariable = JOptionPane.showInputDialog("Por favor, introduce el valor de la variable " + nombreVariable);
             variables.append("    " + tipoVariable + " " + nombreVariable + " = " + valorVariable + ";\n");
+            generarVariable = JOptionPane.showConfirmDialog(null, "¿Deseas generar otra variable?", "Confirmación", JOptionPane.YES_NO_OPTION);
         }
-    }
 
-    taEntrada.setText("public class "+ nombreClase +"{\n" +
-        "  private " + tipo +" " + nombreMetodo + "(){\n" +
-        variables.toString() +
-        "  }\n" +
-        "}"
-    );
+        taEntrada.setText("public class "+ nombreClase +"{\n" +
+            "  private " + tipo +" " + nombreMetodo + "(){\n" +
+            variables.toString() +
+            "  }\n" +
+            "}"
+        );
     }//GEN-LAST:event_generarMouseClicked
 
     private void limpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limpiarMouseClicked
@@ -221,6 +235,23 @@ GUI() {
         }
     }
     }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        JFileChooser fileChooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos JAVA", "java");
+        fileChooser.setFileFilter(filter);
+        int seleccion = fileChooser.showSaveDialog(null);
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            File archivo = fileChooser.getSelectedFile();
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(archivo));
+                writer.write(taEntrada.getText());
+                writer.close();
+            } catch (IOException ex) {
+                System.out.println("Error al escribir el archivo");
+            }
+        }
+    }//GEN-LAST:event_jButton3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -268,6 +299,7 @@ GUI() {
     private javax.swing.JButton generar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton limpiar;
